@@ -41,7 +41,7 @@ class Person(name: String, val age: Int) {
 
   // overloading
   def greet: Unit             = println(s"Hi, I am $name")
-  def greet(x: Int = 1): Unit = println(s"Hi, I am $x") // HOW TO CALL THIS FUNCTION?
+  def greet(x: Int = 1): Unit = println(s"Hi, I am $x")
 
   // multiple constructors
   def this(name: String) = this(name, 0)
