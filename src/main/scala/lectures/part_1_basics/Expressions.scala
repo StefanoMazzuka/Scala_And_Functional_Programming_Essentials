@@ -25,13 +25,13 @@ object Expressions extends App {
   println(1 + 3)
 
   var i = 0
-  val a_while = while(i < 10) { // NEVER WRITE THIS AGAIN!
+  val a_while: Unit = while(i < 10) { // NEVER WRITE THIS AGAIN!
     println(1)
     i += 1
   }
 
   // EVERYTHING in Scala is an Expression!
-  val a_weird_value = (a_variable = 3) // Unit === void
+  val a_weird_value: Unit = a_variable = 3 // Unit === void
   println(a_weird_value) // Side effects: println(), whiles, reassigning. Side effect = Expression that returns Unit
 
   // CODE BLOCK (are expressions)

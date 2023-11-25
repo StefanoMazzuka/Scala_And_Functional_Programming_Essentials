@@ -11,9 +11,9 @@ object Recursion extends App {
   def aFactorialFunction(n: Int): Int = {
     if(n <= 1) 1
     else {
-      println(s"Computing factorial of ${n} - I first need a factorial of ${n - 1}")
+      println(s"Computing factorial of $n - I first need a factorial of ${n - 1}")
       val result = n * aFactorialFunction(n - 1)
-      println(s"Computing factorial of ${n}")
+      println(s"Computing factorial of $n")
 
       result
     }
