@@ -27,11 +27,11 @@ object AnonymousClasses extends App {
   // END
 
   class Person(name: String) {
-    def sayHi: Unit = println(s"Hi, my name is $name")
+    def sayHi(): Unit = println(s"Hi, my name is $name")
   }
 
   val jim = new Person("Jim") {
-    override def sayHi: Unit = println("Hi, my name is Jim, how can I be of service?")
+    override def sayHi(): Unit = println("Hi, my name is Jim, how can I be of service?")
   }
 
   /*
