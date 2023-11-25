@@ -6,12 +6,12 @@ package lectures.part_2_oop
 object AnonymousClasses extends App {
 
   abstract class Animal {
-    def eat: Unit
+    def eat(): Unit
   }
 
   // Anonymous class
   val funny_animal_0: Animal = new Animal {
-    override def eat: Unit = println("nom nom")
+    override def eat(): Unit = println("nom nom")
   }
 
   println(funny_animal_0.getClass) // class lectures.part_2_oop.AnonymousClasses$$anon$1
@@ -19,7 +19,7 @@ object AnonymousClasses extends App {
   // Equivalent to:
   // START
   class AnonymousClasses$$anon$1 extends Animal {
-    override def eat: Unit = println("nom nom")
+    override def eat(): Unit = println("nom nom")
   }
 
   val funny_animal_1 = new AnonymousClasses$$anon$1
@@ -49,6 +49,4 @@ object AnonymousClasses extends App {
     [1,2,3,4].filter(n % 2)        = [2,4]
     [1,2,3].flatMap(n => [n, n+1]) = [1,2,2,3,3,4]
   */
-
-
 }
