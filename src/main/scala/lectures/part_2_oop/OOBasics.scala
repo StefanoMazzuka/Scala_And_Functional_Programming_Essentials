@@ -89,7 +89,7 @@ class Counter(val i: Int) {
     new Counter(i - 1)
   }
   def decrement(i: Int): Counter = {
-    if (i <= 0) this
+    if(i <= 0) this
     else decrement.decrement(i - 1)
   }
 }

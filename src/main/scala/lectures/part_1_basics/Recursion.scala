@@ -9,7 +9,7 @@ import scala.annotation.tailrec
 object Recursion extends App {
 
   def aFactorialFunction(n: Int): Int = {
-    if (n <= 1) 1
+    if(n <= 1) 1
     else {
       println(s"Computing factorial of ${n} - I first need a factorial of ${n - 1}")
       val result = n * aFactorialFunction(n - 1)
@@ -25,7 +25,7 @@ object Recursion extends App {
   // TAIL RECURSION
   @tailrec // We put this tag to prove that is Tail Recursion. If it's not, it would be an error
     def factorialHelper(x: Int, accumulator: BigInt): BigInt = {
-      if (x <= 1) accumulator
+      if(x <= 1) accumulator
       else factorialHelper(x - 1, x * accumulator) // Tail Recursion = Use recursive call as the LAST expression
     }
 
@@ -58,8 +58,8 @@ object Recursion extends App {
   def isPrime(n: Int): Boolean = {
     @tailrec
     def recursiveDivision(dividend: Int, divisior: Int, result: Boolean = false): Boolean = {
-      if (divisior <= 1) true
-      else if ((dividend % divisior) == 0) false
+      if(divisior <= 1) true
+      else if((dividend % divisior) == 0) false
       else recursiveDivision(dividend, divisior - 1, true)
     }
 
@@ -71,7 +71,7 @@ object Recursion extends App {
   def aFibonacciFunction(n: Int): Int = {
     @tailrec
     def aFibonacciTailRecursion(count: Int, last: Int, nextToLast: Int): Int = {
-      if (count == n) last
+      if(count == n) last
       else aFibonacciTailRecursion(count + 1, last + nextToLast, last)
     }
 
