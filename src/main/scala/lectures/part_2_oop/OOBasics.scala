@@ -75,7 +75,7 @@ class Novel(name: String, author: Writer, release_year: Int) {
     - method: overload increment/decrement to receive an amount to increment => return new Counter
  */
 class Counter(val i: Int) {
-  def currentCount: Unit = println(i)
+  def currentCount = println(i)
   def increment: Counter = {
     println("incrementing")
     new Counter(i + 1)
