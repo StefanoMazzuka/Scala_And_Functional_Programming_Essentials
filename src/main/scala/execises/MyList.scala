@@ -26,7 +26,7 @@ abstract class MyList[+A] {
   def ++[B >: A](list: MyList[B]): MyList[B]
 }
 
-object Empty extends MyList[Nothing] {
+case object Empty extends MyList[Nothing] {
   def head: Nothing = throw new NoSuchElementException
   def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
@@ -38,7 +38,7 @@ object Empty extends MyList[Nothing] {
   def ++[B >: Nothing](list: MyList[B]): MyList[B] = list
 }
 
-class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
+case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
   def head: A = h
   def tail: MyList[A] = t
   def isEmpty: Boolean = false
@@ -98,27 +98,30 @@ object ListTest extends App {
 //  val list_1 = list_0.add(4).add(5).add(6)
 //  println(list_1.printElements)
 
-  val listOfIntegers: MyList[Int] = new Cons[Int](1, new Cons[Int](2, new Cons[Int](3, Empty)))
-  val anotherListOfIntegers: MyList[Int] = new Cons[Int](4, new Cons[Int](5, Empty))
-  val listOfString: MyList[String] = new Cons[String]("Hello", new Cons[String]("Scala", Empty))
+  val list_of_integers: MyList[Int] = new Cons[Int](1, new Cons[Int](2, new Cons[Int](3, Empty)))
+  val clone_list_of_integers: MyList[Int] = new Cons[Int](1, new Cons[Int](2, new Cons[Int](3, Empty)))
+  val another_list_of_integers: MyList[Int] = new Cons[Int](4, new Cons[Int](5, Empty))
+  val list_of_strings: MyList[String] = new Cons[String]("Hello", new Cons[String]("Scala", Empty))
 
-  println(listOfIntegers.toString)
-  println(listOfString.toString)
+  println(list_of_integers.toString)
+  println(list_of_strings.toString)
 
   val map_transformer = new MyTransformer[Int, Int] {
     override def transform(elem: Int): Int = elem * 2
   }
-  println(listOfIntegers.map(map_transformer).toString)
+  println(list_of_integers.map(map_transformer).toString)
 
   val filter_predicate = new MyPredicate[Int] {
     override def test(elem: Int): Boolean = elem % 2 == 0
   }
-  println(listOfIntegers.filter(filter_predicate).toString)
+  println(list_of_integers.filter(filter_predicate).toString)
 
-  println((listOfIntegers ++ anotherListOfIntegers).toString)
+  println((list_of_integers ++ another_list_of_integers).toString)
 
   val flatmap_transformer = new MyTransformer[Int, MyList[Int]] {
     override def transform(elem: Int): MyList[Int] = new Cons(elem, new Cons(elem + 1, Empty))
   }
-  println(listOfIntegers.flatMap(flatmap_transformer).toString)
+  println(list_of_integers.flatMap(flatmap_transformer).toString)
+  
+  println(clone_list_of_integers == list_of_integers)
 }
