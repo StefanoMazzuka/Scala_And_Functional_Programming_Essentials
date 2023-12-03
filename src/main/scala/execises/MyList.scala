@@ -82,11 +82,11 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
   def ++[B >: A](list: MyList[B]): MyList[B] = new Cons(h, t ++ list)
 }
 
-trait MyPredicate[-T] {
+trait MyPredicate[-T] { // T => Boolean
   def test(elem: T): Boolean
 }
 
-trait MyTransformer[-A, B] {
+trait MyTransformer[-A, B] { // A => B
   def transform(elem: A): B
 }
 
