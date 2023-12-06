@@ -1,4 +1,4 @@
-package lectures.part3fp
+package lectures.part_3_fp
 
 /**
  * @author Stefano Mazzuka on 03/12/2023
